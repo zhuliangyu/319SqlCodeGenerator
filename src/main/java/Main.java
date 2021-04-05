@@ -86,7 +86,9 @@ public class Main {
 
         public static String genNewEmployee(){
         Faker faker = new Faker();
-        int isContractor = getRandomIntBetweenRange(0, 1);
+            // int isContractor = getRandomIntBetweenRange(0, 1);
+            // all auto insertion are employees
+        int isContractor = 0;
 
 //        String CompanyCode = stringWrapper(getRandomItemFromList(CompanyCodeList));
 //        String OfficeCode = stringWrapper(getRandomItemFromList(OfficeCodeList));
