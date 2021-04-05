@@ -11,7 +11,7 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
-    public static int numbersOfEmployees = 30;
+    public static int numbersOfEmployees = 1000;
     public static List<String> TitleList = Arrays.asList("General manager", "Director",
             "Manager", "Supervisor", "Assistant manager", "Associate");
 //    public static List<String> LocationList = Arrays.asList("GHHDT1H7", "TH8LF9", "LDFS8F3DDS", "JGH7T");
@@ -108,7 +108,7 @@ public class Main {
         String Title = stringWrapper(getRandomItemFromList(TitleList));
         String HireDate = stringWrapper(dateBetween(LocalDate.of(1989, Month.OCTOBER, 14), LocalDate.of(2015, Month.OCTOBER, 14)).toString());
         String TerminationDate = "NULL";
-        int SupervisorEmployeeNumber = getRandomIntBetweenRange(1, i-1);
+        int SupervisorEmployeeNumber = getRandomIntBetweenRange(1, i+1);
         int YearsPriorExperience = getRandomIntBetweenRange(1, 20);
         String Email = stringWrapper(faker.name().firstName() + "@amc.com");
         String WorkPhone = stringWrapper(genPhoneNumber());
