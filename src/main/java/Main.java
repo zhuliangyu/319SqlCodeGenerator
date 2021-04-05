@@ -115,9 +115,11 @@ public class Main {
         String WorkCell = stringWrapper(genPhoneNumber());
 //        String LocationId = stringWrapper(getRandomItemFromList(LocationList));
         String PhotoUrl = stringWrapper("images/999.jpg");
+        String Bio = stringWrapper("Hi, I am  an employee of Associated Engineering");
+        String ExtraInfo = stringWrapper("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
 
         StringBuilder sb = new StringBuilder();
-        sb.append("INSERT INTO Employee (isContractor, CompanyCode, OfficeCode, GroupCode, LastName, FirstName, EmploymentType, Title, HireDate, TerminationDate,SupervisorEmployeeNumber, YearsPriorExperience, Email, WorkPhone, WorkCell, LocationId, PhotoUrl)VALUES (");
+        sb.append("INSERT INTO Employee (isContractor, CompanyCode, OfficeCode, GroupCode, LastName, FirstName, EmploymentType, Title, HireDate, TerminationDate,SupervisorEmployeeNumber, YearsPriorExperience, Email, WorkPhone, WorkCell, LocationId, PhotoUrl, Bio, ExtraInfo)VALUES (");
         sb.append(isContractor + ",");
         sb.append(CompanyCode + ",");
         sb.append(OfficeCode + ",");
@@ -134,7 +136,9 @@ public class Main {
         sb.append(WorkPhone + ",");
         sb.append(WorkCell + ",");
         sb.append(LocationId + ",");
-        sb.append(PhotoUrl + ");");
+        sb.append(PhotoUrl + ",");
+        sb.append(Bio + ",");
+        sb.append(ExtraInfo + ");");
         sb.append("\n");
 
         //(isContractor, CompanyCode, OfficeCode, GroupCode, LastName, FirstName, EmploymentType, Title, HireDate, TerminationDate,SupervisorEmployeeNumber, YearsPriorExperience, Email, WorkPhone, WorkCell, LocationId, LocationId)
