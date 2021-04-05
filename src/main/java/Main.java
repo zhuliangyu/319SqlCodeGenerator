@@ -1,5 +1,6 @@
 import com.github.javafaker.Faker;
 
+import javax.xml.stream.Location;
 import java.io.FileWriter;
 import java.io.Writer;
 import java.time.LocalDate;
@@ -13,11 +14,38 @@ public class Main {
     public static int numbersOfEmployees = 30;
     public static List<String> TitleList = Arrays.asList("General manager", "Director",
             "Manager", "Supervisor", "Assistant manager", "Associate");
-    public static List<String> LocationList = Arrays.asList("GHHDT1H7", "TH8LF9", "LDFS8F3DDS", "JGH7T");
-    public static List<String> CompanyCodeList = Arrays.asList("01", "02", "03");
-    public static List<String> OfficeCodeList = Arrays.asList("01", "02", "03", "04");
-    public static List<String> GroupCodeList = Arrays.asList("01", "02", "03", "04", "05");
-    public static List<String> SkillIdList = Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
+//    public static List<String> LocationList = Arrays.asList("GHHDT1H7", "TH8LF9", "LDFS8F3DDS", "JGH7T");
+//    public static List<String> CompanyCodeList = Arrays.asList("01", "02", "03");
+//    public static List<String> OfficeCodeList = Arrays.asList("01", "02", "03", "04");
+//    public static List<String> GroupCodeList = Arrays.asList("01", "02", "03", "04", "05");
+    public static String[][] groups = {
+            {"01","01","01"},
+            {"01","01","02"},
+            {"01","01","03"},
+            {"01","01","04"},
+            {"01","01","05"},
+
+            {"02","01","01"},
+            {"02","01","02"},
+            {"02","01","03"},
+
+            {"02","02","04"},
+            {"02","02","05"},
+            {"02","02","06"},
+
+            {"03","03","01"},
+            {"03","03","03"},
+            {"03","03","04"},
+            {"03","03","05"},
+
+            {"03","04","09"},
+    };
+    public static int group_len = groups.length;
+
+    public static String[] locations = {"01", "02", "03", "04", "05", "06"};
+    public static int location_len = locations.length;
+
+    public static List<String> SkillIdList = Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16");
     public static String employeeFilePath = "src/employees.sql";
     public static String skillsFilePath = "src/skills.sql";
 
@@ -59,9 +87,19 @@ public class Main {
         public static String genNewEmployee(){
         Faker faker = new Faker();
         int isContractor = getRandomIntBetweenRange(0, 1);
-        String CompanyCode = stringWrapper(getRandomItemFromList(CompanyCodeList));
-        String OfficeCode = stringWrapper(getRandomItemFromList(OfficeCodeList));
-        String GroupCode = stringWrapper(getRandomItemFromList(GroupCodeList));
+
+//        String CompanyCode = stringWrapper(getRandomItemFromList(CompanyCodeList));
+//        String OfficeCode = stringWrapper(getRandomItemFromList(OfficeCodeList));
+//        String GroupCode = stringWrapper(getRandomItemFromList(GroupCodeList));
+        Random random = new Random();
+        String[] combo = groups[random.nextInt(group_len)];
+        String CompanyCode = stringWrapper(combo[0]);
+        String OfficeCode = stringWrapper(combo[1]);
+        String GroupCode = stringWrapper(combo[2]);
+        // if office==corporate, we can assign any locations to it
+        String LocationId = OfficeCode.equals("'01'") ? stringWrapper(locations[random.nextInt(location_len)]) : OfficeCode;
+
+
         String LastName = stringWrapper(faker.name().lastName()); // Barton
         String FirstName = stringWrapper(faker.name().firstName()); // Emory
         String EmploymentType = stringWrapper("Salary");
@@ -73,7 +111,7 @@ public class Main {
         String Email = stringWrapper(faker.name().firstName() + "@amc.com");
         String WorkPhone = stringWrapper(genPhoneNumber());
         String WorkCell = stringWrapper(genPhoneNumber());
-        String LocationId = stringWrapper(getRandomItemFromList(LocationList));
+//        String LocationId = stringWrapper(getRandomItemFromList(LocationList));
         String PhotoUrl = stringWrapper("images/999.jpg");
 
         StringBuilder sb = new StringBuilder();
