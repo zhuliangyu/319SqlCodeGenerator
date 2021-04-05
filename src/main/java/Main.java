@@ -97,7 +97,7 @@ public class Main {
         String OfficeCode = stringWrapper(combo[1]);
         String GroupCode = stringWrapper(combo[2]);
         // if office==corporate, we can assign any locations to it
-        String LocationId = OfficeCode.equals("01") ? stringWrapper(locations[random.nextInt(location_len)]) : OfficeCode;
+        String LocationId = OfficeCode.equals("'01'") ? stringWrapper(locations[random.nextInt(location_len)]) : OfficeCode;
 
 
         String LastName = stringWrapper(faker.name().lastName()); // Barton
